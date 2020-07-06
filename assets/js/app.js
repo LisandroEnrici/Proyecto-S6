@@ -15,20 +15,11 @@ function eventListeners() {
 
 // Funciones
 
-function leerContador(){
-    if(localStorage.getItem('contador') === null) {
-        localStorage.setItem('contador', 1);
-        return 1
-    } else {
-        return Number(localStorage.getItem('contador'));
-    }
-}
-
 function agregarTweet(e) {
     e.preventDefault();
     
     //Leer contador
-    let contador = leerContador();
+    let contador = obtenerContador();
 
     // Leer el valor del textArea
     let tweetArea = document.querySelector('#tweetArea');
@@ -52,6 +43,15 @@ function agregarTweet(e) {
     tweetArea.value = ``;
     contador += 1;
     localStorage.setItem('contador', contador);
+}
+
+function obtenerContador(){
+    if(localStorage.getItem('contador') === null) {
+        localStorage.setItem('contador', 1);
+        return 1
+    } else {
+        return Number(localStorage.getItem('contador'));
+    }
 }
 
 function borrarTweet(e) {
