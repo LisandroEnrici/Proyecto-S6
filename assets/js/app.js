@@ -25,25 +25,29 @@ function agregarTweet(e) {
     let tweetArea = document.querySelector('#tweetArea');
     const tweetText = `Tweet ${contador}: ${tweetArea.value}`;
     
-    // Crear boton eliminar
-    const botonBorrar = document.createElement('a');
-    botonBorrar.classList = "borrarTweet";
-    botonBorrar.id = "botoncito";
-    botonBorrar.innerText = "X";
-
-    // Crear elemento y añadirlo a la lista
-    const li = document.createElement('li');
-    li.innerText = tweetText;
-    li.appendChild(botonBorrar);
-    listaTwetts.appendChild(li);
+    crearElementoTweet(tweetText);
 
     // Agregar tw al local storage
     almacenarTweet(tweetText);
 
     tweetArea.value = ``;
-    contador += 1;
-    localStorage.setItem('contador', contador);
+    aumentarContador(contador);
 }
+
+function crearElementoTweet(tweetText) {
+    // Crear boton eliminar
+    const botonBorrar = document.createElement('a');
+    botonBorrar.classList = "borrarTweet";
+    botonBorrar.id = "botoncito";
+    botonBorrar.innerText = "X";
+ 
+    // Crear elemento y añadirlo a la lista
+    const li = document.createElement('li');
+    li.innerText = tweetText;
+    li.appendChild(botonBorrar);
+    listaTwetts.appendChild(li);
+}
+
 
 function obtenerContador(){
     if(localStorage.getItem('contador') === null) {
@@ -52,6 +56,11 @@ function obtenerContador(){
     } else {
         return Number(localStorage.getItem('contador'));
     }
+}
+
+function aumentarContador(contador) {
+    contador += 1;
+    localStorage.setItem('contador', contador);
 }
 
 function borrarTweet(e) {
