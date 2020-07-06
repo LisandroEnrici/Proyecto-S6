@@ -1,6 +1,6 @@
 // Variables
 const listaTwetts = document.getElementById('listaTweets');
-let contador = 1;
+initContador();
 
 // EventListeners
 eventListeners();
@@ -15,6 +15,12 @@ function eventListeners() {
 }
 
 // Funciones
+
+function initContador(){
+    if(localStorage.getItem('contador') === null) {
+        localStorage.setItem('contador', 0);
+    }
+}
 
 function agregarTweet(e) {
     e.preventDefault();
@@ -53,8 +59,26 @@ function borrarTweet(e) {
 
 function almacenarTweet(tweet) {
     let tweets;
+    tweets = obtenerTweets();
+    // Añadir el nuevo tweet
+    tweets.push(tweet);
     
-    // Agregar al localStorage
-    localStorage.setItem('tweets', tweet);
+    //Convertimos de string a arreglo
+    tweetsString = JSON.stringify(tweets)
 
+    // Agregar al localStorage
+    localStorage.setItem('tweets', tweetsString);
+
+}
+
+function obtenerTweets() {
+    let tweets;
+    // Revistamos los valores en ls
+    if(localStorage.getItem('tweets') === null) {
+        tweets = [];
+    } else {
+        // LS solo guarda string, JSON lo pasa a arreglo
+        tweets = JSON.parse(localStorage.getItem('tweets'));
+    }
+    return tweets
 }
