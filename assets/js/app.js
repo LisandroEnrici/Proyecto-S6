@@ -11,6 +11,9 @@ function eventListeners() {
 
     // Click en borrar Tweet
     listaTwetts.addEventListener('dblclick', borrarTweet);
+
+    //Cargar tweets de LocalStorage
+    document.addEventListener('DOMContentLoaded', cargarTweetsLocalStorage);     
 }
 
 // Funciones
@@ -48,7 +51,6 @@ function crearElementoTweet(tweetText) {
     listaTwetts.appendChild(li);
 }
 
-
 function obtenerContador(){
     if(localStorage.getItem('contador') === null) {
         localStorage.setItem('contador', 1);
@@ -66,9 +68,9 @@ function aumentarContador(contador) {
 function borrarTweet(e) {
     e.preventDefault;
     if(e.target.classList.contains('borrarTweet')) {
-        let tweetText = e.target.parentElement.innerText
+        let tweetText = e.target.parentElement.textContent
         e.target.parentElement.remove();
-        alert('Tweet eliminado');
+        eliminarTweetLocalStorage(tweetText);
     }
 }
 
@@ -96,4 +98,25 @@ function obtenerTweets() {
         tweets = JSON.parse(localStorage.getItem('tweets'));
     }
     return tweets
+}
+
+function cargarTweetsLocalStorage() {
+    let tweets;
+    tweets = obtenerTweets();
+    tweets.forEach(function(tweetText) {
+        crearElementoTweet(tweetText);
+    });
+}
+
+function eliminarTweetLocalStorage(tweetText) {
+    let tweets, aBorrar;
+    aBorrar = tweetText.substring(0, tweetText.length - 1);
+    tweets = obtenerTweets();
+    tweets.forEach(function(tweet, index) {
+        if(aBorrar == tweet) {
+            tweets.splice(index, 1);
+        }
+    });
+
+    localStorage.setItem('tweets', JSON.stringify(tweets));
 }
