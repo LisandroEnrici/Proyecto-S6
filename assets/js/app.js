@@ -1,5 +1,5 @@
 // Variables
-const listaTwetts = document.getElementById('lista-tweets');
+const listaTwetts = document.getElementById('listaTweets');
 
 
 

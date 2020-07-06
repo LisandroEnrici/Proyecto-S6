@@ -10,5 +10,5 @@ h1, h2 {
     float: right;
     cursor: pointer;
     color: red;
-    font-weight: bold;
+    font-weight: bolder;
 }
