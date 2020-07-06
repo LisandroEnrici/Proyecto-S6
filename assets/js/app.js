@@ -1,6 +1,5 @@
 // Variables
 const listaTwetts = document.getElementById('listaTweets');
-initContador();
 
 // EventListeners
 eventListeners();
@@ -16,15 +15,21 @@ function eventListeners() {
 
 // Funciones
 
-function initContador(){
+function leerContador(){
     if(localStorage.getItem('contador') === null) {
-        localStorage.setItem('contador', 0);
+        localStorage.setItem('contador', 1);
+        return 1
+    } else {
+        return Number(localStorage.getItem('contador'));
     }
 }
 
 function agregarTweet(e) {
     e.preventDefault();
     
+    //Leer contador
+    let contador = leerContador();
+
     // Leer el valor del textArea
     let tweetArea = document.querySelector('#tweetArea');
     const tweetText = `Tweet ${contador}: ${tweetArea.value}`;
@@ -45,7 +50,8 @@ function agregarTweet(e) {
     almacenarTweet(tweetText);
 
     tweetArea.value = ``;
-    contador += 2;
+    contador += 1;
+    localStorage.setItem('contador', contador);
 }
 
 function borrarTweet(e) {
