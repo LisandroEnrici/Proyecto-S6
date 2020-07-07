@@ -11,7 +11,7 @@ function eventListeners() {
     formulario.addEventListener('submit', agregarTweet)
 
     // Click en borrar Tweet
-    listaTwetts.addEventListener('dblclick', borrarTweet);
+    listaTwetts.addEventListener('click', borrarTweet);
 
     //Cargar tweets de LocalStorage
     document.addEventListener('DOMContentLoaded', cargarTweetsLocalStorage);     
@@ -134,7 +134,7 @@ function limpiarTweets(e) {
     e.preventDefault;
     if(confirm('¿Esta seguro que desea eliminar todos los tweets de forma permanente?')) {
         limpiarListaTweets();
-        limpiarLocalStorage();
+        limpiarTweetsLS();
     }
     tweetArea.focus();
 }
@@ -145,7 +145,6 @@ function limpiarListaTweets() {
       }
 }
 
-function limpiarLocalStorage() {
-    localStorage.clear();
-    console.log('ssd');
+function limpiarTweetsLS() {
+    localStorage.removeItem('tweets');
 }
