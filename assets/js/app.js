@@ -1,4 +1,4 @@
-// Variables
+// Variables globales
 const listaTwetts = document.getElementById('listaTweets');
 
 // EventListeners
@@ -16,6 +16,7 @@ function eventListeners() {
     document.addEventListener('DOMContentLoaded', cargarTweetsLocalStorage);     
 
     //Click en limpiar
+    formulario.addEventListener('reset', limpiarTweets);
 }
 
 // Funciones
@@ -121,4 +122,23 @@ function eliminarTweetLocalStorage(tweetText) {
     });
 
     localStorage.setItem('tweets', JSON.stringify(tweets));
+}
+
+function limpiarTweets(e) {
+    e.preventDefault;
+    if(confirm('¿Esta seguro que desea eliminar todos los tweets de forma permanente?')) {
+        limpiarListaTweets();
+        limpiarLocalStorage();
+    }
+}
+
+function limpiarListaTweets() {
+    while (listaTwetts.lastElementChild) {
+        listaTwetts.removeChild(listaTwetts.lastElementChild);
+      }
+}
+
+function limpiarLocalStorage() {
+    localStorage.clear();
+    console.log('ssd');
 }
