@@ -30,6 +30,9 @@ function agregarTweet(e) {
 
     // Leer el valor del textArea
     let tweetArea = document.querySelector('#tweetArea');
+    if(tweetArea.value == ''){
+        alert('No puede crear un Tweet vacío');
+    } else {
     const tweetText = `Tweet ${contador}: ${tweetArea.value}`;
     
     crearElementoTweet(tweetText);
@@ -39,6 +42,7 @@ function agregarTweet(e) {
 
     tweetArea.value = ``;
     aumentarContador(contador);
+    }
     tweetArea.focus();
 }
 
