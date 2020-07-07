@@ -25,3 +25,7 @@ input[type="reset"].button-primary:hover{
 input[type="reset"]:focus {
     background-color: red;
 }
+
+textarea {
+    resize: none;
+  }

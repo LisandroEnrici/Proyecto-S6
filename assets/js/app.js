@@ -1,5 +1,6 @@
 // Variables globales
 const listaTwetts = document.getElementById('listaTweets');
+let tweetArea = document.querySelector('#tweetArea');
 
 // EventListeners
 eventListeners();
@@ -38,6 +39,7 @@ function agregarTweet(e) {
 
     tweetArea.value = ``;
     aumentarContador(contador);
+    tweetArea.focus();
 }
 
 function crearElementoTweet(tweetText) {
@@ -130,6 +132,7 @@ function limpiarTweets(e) {
         limpiarListaTweets();
         limpiarLocalStorage();
     }
+    tweetArea.focus();
 }
 
 function limpiarListaTweets() {
