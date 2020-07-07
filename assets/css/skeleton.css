@@ -195,7 +195,6 @@ input[type="button"]:hover,
 .button:focus,
 button:focus,
 input[type="submit"]:focus,
-input[type="reset"]:focus,
 input[type="button"]:focus {
   color: #333;
   border-color: #888;

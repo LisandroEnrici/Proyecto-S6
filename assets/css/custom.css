@@ -12,3 +12,16 @@ h1, h2 {
     color: red;
     font-weight: bolder;
 }
+
+.button-reset,
+input[type="reset"].button-primary,
+.button-reset:hover,
+input[type="reset"].button-primary:hover{
+    float: right;
+    background-color: #f03933;
+  border-color: #f03333;
+}
+
+input[type="reset"]:focus {
+    background-color: red;
+}

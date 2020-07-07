@@ -14,6 +14,8 @@ function eventListeners() {
 
     //Cargar tweets de LocalStorage
     document.addEventListener('DOMContentLoaded', cargarTweetsLocalStorage);     
+
+    //Click en limpiar
 }
 
 // Funciones
